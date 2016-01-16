@@ -1,0 +1,12 @@
+name             'poise-ruby-example'
+maintainer       'YOUR_NAME'
+maintainer_email 'YOUR_EMAIL'
+license          'All rights reserved'
+description      'Installs/Configures poise-ruby-example'
+long_description 'Installs/Configures poise-ruby-example'
+version          '0.1.0'
+
+depends 'application_ruby'
+depends 'apt'
+depends 'build-essential'
+depends 'git'
