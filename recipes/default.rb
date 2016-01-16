@@ -18,11 +18,19 @@ my_git_resource = 'railstutorial'
 application '/srv/sample_app' do
   ruby '2.0'
 
+  # When using the explit form like this, the resource object must be defined
+  # before the notifiying resource.
+  r = ruby_execute 'notify-me-too' do
+    command 'ruby -v'
+    action :nothing
+  end
+
   git my_git_resource do
     repository 'https://github.com/railstutorial/sample_app'
     destination '/srv/sample_app'
     revision 'master'
-    notifies :run, "ruby_execute[notify-me]"
+    notifies :run, "application_ruby_execute[notify-me]"
+    notifies :run, r
     notifies :run, "execute[this-works-though]"
     action :sync
   end
